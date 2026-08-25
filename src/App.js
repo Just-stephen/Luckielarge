@@ -12,13 +12,13 @@ function HomePage() {
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
-    document.title = 'Luckielarge | Startup Funding, Mentorship & Growth for African Founders';
+    document.title = 'Luckielarge | Business Investor for African Founders';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Luckielarge helps African founders access funding, mentorship, and market opportunities to build sustainable, high-impact businesses.'
+        'Luckielarge is a business investor.'
       );
     }
   }, []);

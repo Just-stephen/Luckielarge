@@ -6,6 +6,13 @@ const impactImages = [
   '/images/impact/WhatsApp Image 2026-01-23 at 06.28.38 (1).jpeg',
   '/images/impact/WhatsApp Image 2026-01-23 at 06.29.08 (1).jpeg',
   '/images/impact/WhatsApp Image 2026-01-23 at 06.30.05.jpeg',
+  '/images/impact/IMG-20260825-WA0030.jpg',
+  '/images/impact/IMG-20260825-WA0032.jpg',
+  '/images/impact/IMG-20260825-WA0035.jpg',
+  '/images/impact/IMG-20260825-WA0038.jpg',
+  '/images/impact/IMG-20260825-WA0040.jpg',
+  '/images/impact/IMG-20260825-WA0047.jpg',
+  '/images/impact/IMG-20260825-WA0051.jpg',
 ];
 
 function ImpactPage() {

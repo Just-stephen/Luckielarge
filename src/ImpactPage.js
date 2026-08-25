@@ -11,7 +11,6 @@ const impactImages = [
   '/images/impact/IMG-20260825-WA0035.jpg',
   '/images/impact/IMG-20260825-WA0038.jpg',
   '/images/impact/IMG-20260825-WA0040.jpg',
-  '/images/impact/IMG-20260825-WA0047.jpg',
   '/images/impact/IMG-20260825-WA0051.jpg',
 ];
 

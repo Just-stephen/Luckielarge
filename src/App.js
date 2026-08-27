@@ -4,6 +4,7 @@ import './App.css';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
 import ImpactPage from './ImpactPage';
+import GalleryPage from './GalleryPage';
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -74,6 +75,7 @@ function HomePage() {
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <Link to="/about" className="nav-link-button" onClick={closeMenu}>About</Link>
             <Link to="/impact" onClick={closeMenu}>Impact</Link>
+            <Link to="/gallery" onClick={closeMenu}>Gallery</Link>
             <Link to="/contact" className="nav-cta" onClick={closeMenu}>Contact</Link>
           </nav>
         </div>
@@ -155,6 +157,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/impact" element={<ImpactPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>

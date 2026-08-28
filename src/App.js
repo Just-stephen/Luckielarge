@@ -8,9 +8,6 @@ import GalleryPage from './GalleryPage';
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const heroImages = ['image1.jpg', 'image2.jpg'];
-  const [heroIndex, setHeroIndex] = useState(0);
-  const [prevHeroIndex, setPrevHeroIndex] = useState(null);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
@@ -27,23 +24,18 @@ function HomePage() {
     }
   }, []);
 
-  // Hero background crossfade using state
   useEffect(() => {
-    // preload images
-    heroImages.forEach((img) => {
-      const i = new Image();
-      i.src = `/images/${img}`;
-    });
+    const intervalId = setInterval(() => {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
 
-    const id = setInterval(() => {
-      setHeroIndex((h) => {
-        setPrevHeroIndex(h);
-        return (h + 1) % heroImages.length;
-      });
-    }, 4000);
+      const currentImage = hero.style.backgroundImage.includes('image2') ? 'image2' : 'image1';
+      const nextImage = currentImage === 'image1' ? 'image2' : 'image1';
 
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      hero.style.backgroundImage = `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${nextImage}.jpg')`;
+    }, 3500);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const organizationSchema = {
@@ -88,23 +80,7 @@ function HomePage() {
           </nav>
         </div>
 
-          {/* background layers for smooth crossfade */}
-          {prevHeroIndex !== null && (
-            <div
-              className={`hero-bg`}
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${heroImages[prevHeroIndex]}')`,
-              }}
-            />
-          )}
-          <div
-            className={`hero-bg visible`}
-            style={{
-              backgroundImage: `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${heroImages[heroIndex]}')`,
-            }}
-          />
-
-          <div className="hero-content">
+        <div className="hero-content">
           <p className="eyebrow">Luckie Large </p>
           <h1>Visionary Entrepreneur, Executive Leader, and Philanthropist.</h1>
           {/* <p className="hero-copy">

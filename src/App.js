@@ -8,6 +8,9 @@ import GalleryPage from './GalleryPage';
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const heroImages = ['image1.jpg', 'image2.jpg'];
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [prevHeroIndex, setPrevHeroIndex] = useState(null);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
@@ -24,26 +27,31 @@ function HomePage() {
     }
   }, []);
 
+  // Hero background crossfade using state
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const hero = document.querySelector('.hero');
-      if (!hero) return;
+    // preload images
+    heroImages.forEach((img) => {
+      const i = new Image();
+      i.src = `/images/${img}`;
+    });
 
-      const currentImage = hero.style.backgroundImage.includes('image2') ? 'image2' : 'image1';
-      const nextImage = currentImage === 'image1' ? 'image2' : 'image1';
+    const id = setInterval(() => {
+      setHeroIndex((h) => {
+        setPrevHeroIndex(h);
+        return (h + 1) % heroImages.length;
+      });
+    }, 4000);
 
-      hero.style.backgroundImage = `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${nextImage}.jpg')`;
-    }, 3500);
-
-    return () => clearInterval(intervalId);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Luckielarge',
-    url: 'https://luckielarge.com',
-    description: 'Luckielarge supports African founders with capital, mentorship, and market access.',
+    name: 'Luckie Large',
+    url: 'https://luckie large.com',
+    description: 'Luckie Large supports African founders with capital, mentorship, and market access.',
     founder: {
       '@type': 'Person',
       name: 'Mr Lucky Large',
@@ -58,7 +66,7 @@ function HomePage() {
         <div className="nav">
           <div className="brand-row">
             <span className="brand-mark" aria-hidden="true" />
-            <span className="brand">Luckielarge</span>
+            <span className="brand">Luckie Large </span>
           </div>
 
           <button
@@ -80,8 +88,24 @@ function HomePage() {
           </nav>
         </div>
 
-        <div className="hero-content">
-          <p className="eyebrow">Mr Lucky Large · Founder · Entrepreneur</p>
+          {/* background layers for smooth crossfade */}
+          {prevHeroIndex !== null && (
+            <div
+              className={`hero-bg`}
+              style={{
+                backgroundImage: `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${heroImages[prevHeroIndex]}')`,
+              }}
+            />
+          )}
+          <div
+            className={`hero-bg visible`}
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(55, 35, 155, 0.72), rgba(99, 56, 247, 0.78)), url('/images/${heroImages[heroIndex]}')`,
+            }}
+          />
+
+          <div className="hero-content">
+          <p className="eyebrow">Luckie Large </p>
           <h1>Visionary Entrepreneur, Executive Leader, and Philanthropist.</h1>
           {/* <p className="hero-copy">
             Mr Lucky Large is a founder-led entrepreneur helping ambitious African businesses scale through
@@ -97,8 +121,8 @@ function HomePage() {
       <main>
         <section id="about" className="section about">
           <div className="section-header">
-            <span>About Luckielarge</span>
-            <h2>Luckielarge Investment Ltd.</h2>
+            <span>About Luckie Large</span>
+            <h2>Luckie Large Investment Ltd.</h2>
           </div>
           <div className="value-grid">
             <article className="value-card">
@@ -144,7 +168,7 @@ function HomePage() {
       </main>
 
       <footer className="footer">
-        <p>Luckielarge © 2026 · Luckielarge Investment Ltd</p>
+        <p>Luckie Large © 2026 · Luckie Large Investment Ltd</p>
       </footer>
     </div>
   );

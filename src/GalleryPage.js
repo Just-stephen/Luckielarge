@@ -35,14 +35,14 @@ function GalleryPage() {
         <section className="about-hero">
           <div className="about-copy">
             <p className="eyebrow eyebrow-dark">Gallery</p>
-            <h1>Events, Outreach &amp; Impact</h1>
-            <p>Browse photos from recent community engagements, events, and projects supported by Luckielarge and the Obhiaba Foundation.</p>
+            <h1>Luckie Large &amp; 50</h1>
+            
           </div>
 
           <div className="impact-gallery" role="list">
             {galleryImages.map((src, i) => (
               <div key={src} className="impact-item" role="listitem">
-                <img src={src} alt={`Gallery image ${i + 1}`} className="impact-image" />
+                <img src={src} alt={`Community event ${i + 1}`} className="impact-image" />
               </div>
             ))}
           </div>

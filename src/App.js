@@ -144,7 +144,14 @@ function HomePage() {
       </main>
 
       <footer className="footer">
-        <p>Luckie Large © 2026 · Luckie Large Investment Ltd</p>
+        <div className="footer-content">
+          <p>Luckie Large © 2026 · Luckie Large Investment Ltd</p>
+          <div className="footer-socials">
+            <a href="https://www.instagram.com/luckielarge_motors?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="social-link instagram" aria-label="Follow us on Instagram">
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
